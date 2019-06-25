@@ -12,16 +12,14 @@ const newArray = map(arr, (num) => num * 2);
 
 function filter(arr, callback){
     const filtered = [];
-    let j = 0;
     for (let i = 0; i < arr.length; i++) {
       if(callback(arr[i])) {
-        filtered[j] = arr[i]; j++;
+        filtered[filtered.length] = arr[i];
       }
     };
     return filtered;
 };
 
 const filteredArray = filter(arr, (num) => num % 2 === 0)
-console.log(filteredArray);
 
-module.exports = { map, arr, filter}
+module.exports = { map, filter}

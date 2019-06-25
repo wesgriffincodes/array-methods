@@ -1,4 +1,6 @@
-const { arr, map, filter } = require('./index');
+const { map, filter } = require('./index');
+
+const arr = [2,4,6,7,8];
 
 describe('creates a mapped array function', () => {
     it('creates a new mapped array', () => {

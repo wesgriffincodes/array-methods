@@ -1,14 +1,27 @@
-const array = [2,4,6,8];
+const arr = [2,4,6,7,8];
 
-function map(array, callback) {
-    const mappedArray = [];
-    for (let i = 0; i < array.length; i++) {
-        const num = array[i];
-        mappedArray.push(callback(num))
+function map(arr, callback) {
+    const mapped = [];
+    for (let i = 0; i < arr.length; i++) {
+        mapped[i] = callback(arr[i]);
     };
-    return mappedArray;
+    return mapped;
 };
 
-const newArray = map(array, (num) => num * 2);
+const newArray = map(arr, (num) => num * 2);
 
-module.exports = { map, array }
+function filter(arr, callback){
+    const filtered = [];
+    let j = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if(callback(arr[i])) {
+        filtered[j] = arr[i]; j++;
+      }
+    };
+    return filtered;
+};
+
+const filteredArray = filter(arr, (num) => num % 2 === 0)
+console.log(filteredArray);
+
+module.exports = { map, arr, filter}

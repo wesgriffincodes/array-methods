@@ -1,8 +1,15 @@
-const { array, map } = require('./index');
+const { arr, map, filter } = require('./index');
 
 describe('creates a mapped array function', () => {
     it('creates a new mapped array', () => {
-        const newArray = map(array, (num) => num * 2);
-        expect(newArray).toEqual([ 4, 8, 12, 16 ]);
+        const newArray = map(arr, (num) => num * 2);
+        expect(newArray).toEqual(expect.any(Array));
+    });
+});
+
+describe('create filter function', () => {
+    it('creates a filtered array', () => {
+        const newArray = filter(arr, (num) => num % 2 === 0);
+        expect(newArray).toEqual([2,4,6,8]);
     });
 });

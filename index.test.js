@@ -1,4 +1,4 @@
-const { map, filter, findIndex } = require('./index');
+const { map, filter, findIndex, reduce } = require('./index');
 
 const arr = [2, 4, 6, 7, 8];
 
@@ -18,7 +18,23 @@ describe('create filter function', () => {
 
 describe('create findIndex function', () => {
   it('finds item in index', () => {
-    const indexNumber = findIndex(arr, (num) => num > 3);
-    expect(indexNumber).toEqual(1);
+    const index = findIndex(arr, (num) => num > 3);
+    expect(index).toEqual(expect.any(Number));
   });
+});
+
+describe('create reduce function', () => {
+  it('iterates through array and envokes callback', () => {
+    const callback = jest.fn();
+    reduce(arr, callback);
+    expect(callback).toHaveBeenCalledTimes(arr.length);
+  });
+});
+
+it('iterates through the array and sets updates the acc with resultof callback', () => {
+  const sum = reduce(arr, (acc,  item) => acc + item, 0);
+});
+
+it('iterates through the array and sets updates the acc with resultof callback', () => {
+  const sum = reduce(arr, (acc,  item) => acc + item);
 });

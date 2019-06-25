@@ -36,7 +36,21 @@ function findIndex(arr, callback) {
 
 const indexNumber = findIndex(arr, (num) => num > 3);
 
-console.log(indexNumber);
 
+function reduce(arr, callback, initialValue) {
+  let acc = initialValue;
+  let i = 0;
+  if(initialValue === undefined) {
+    i = 1;
+    acc = arr[0];
+  }
+  for(let i = 0; i < arr.length; i++) {
+    acc = callback(acc, arr[i]);
+  }
+  return acc;
+}
 
-module.exports = { map, filter, findIndex };
+const reduceNumber = reduce(arr, (acc, item) => acc + item, 0);
+console.log(reduceNumber);
+
+module.exports = { map, filter, findIndex, reduce };
